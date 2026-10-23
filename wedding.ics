@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sravan and Sreelekha//Wedding//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:sravan-sreelekha-20261121@wedding.local
+DTSTAMP:20261023T000000Z
+DTSTART:20261121T140000Z
+SUMMARY:Sravan Kumar & Sreelekha - Wedding
+LOCATION:Kusuma Satya Convention Hall - 2\, Nadakuduru\, Kakinada
+DESCRIPTION:Join us to celebrate the wedding of Sravan Kumar and Sreelekha.
+END:VEVENT
+END:VCALENDAR
