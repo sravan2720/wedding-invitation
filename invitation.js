@@ -246,7 +246,7 @@ weddingMusic.volume = 0.3;
 
 function setMusicState(playing) {
   musicButton.setAttribute('aria-pressed', String(playing));
-  musicButton.title = playing ? 'Pause traditional music' : 'Play traditional music';
+  musicButton.title = playing ? 'Pause Thana Pranale Neevani' : 'Play Thana Pranale Neevani';
   musicButton.setAttribute('aria-label', musicButton.title);
 }
 setMusicState(false);
