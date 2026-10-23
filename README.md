@@ -12,18 +12,18 @@ VS Code's embedded browser can block recorded audio when opened through `file://
 python3 -m http.server 8765 --bind 127.0.0.1 --directory wedding-invitation
 ```
 
-Open http://127.0.0.1:8765/index.html and tap the music button. This preview is local to your Mac, not a public sharing link.
+Open http://127.0.0.1:8765/index.html and tap the opening seal. The song starts with the opening; the music button pauses or resumes it. This preview is local to your Mac, not a public sharing link.
 
 ## Publish and Share on WhatsApp
 
 The local file and `127.0.0.1` preview cannot be opened by other people.
 
-1. Sign in at https://app.netlify.com/drop using your own account.
-2. Upload the entire `wedding-invitation` folder, not just `index.html`.
-3. Netlify will provide an HTTPS website address. Open it on your phone using mobile data to confirm it is public.
-4. Share that HTTPS address in WhatsApp. Guests do not need an account or an app.
+1. Open the existing `sravan2720/wedding-invitation` GitHub repository in an incognito browser signed into the personal `sravan2720` account. Do not use work accounts, VS Code sign-in, or stored Git credentials.
+2. Upload the contents of the local `wedding-invitation` folder to the repository root, including the complete `assets` folder. Do not nest another `wedding-invitation` folder inside the repository.
+3. Commit to the configured Pages publishing branch, normally `main`, and wait for its Pages deployment to finish successfully.
+4. Open https://sravan2720.github.io/wedding-invitation/ on a phone using mobile data, then share that public address in WhatsApp. Guests do not need an account or an app.
 
-The Share button includes the website address when hosted publicly. In a local preview, it shares only the wedding details. Updating the files on the same Netlify site keeps the same address. Publishing makes the invitation and its event details publicly accessible to anyone with the link.
+The Share button includes the website address when hosted publicly. In a local preview, it shares only the wedding details. Updating the same repository keeps the website address unchanged. Publishing makes the invitation, photos, and audio publicly accessible. The social-preview URLs in `index.html` point to this personal GitHub Pages site; update them if the hosting address changes. WhatsApp may cache previous link previews.
 
 ## Details
 
@@ -38,19 +38,29 @@ The Share button includes the website address when hosted publicly. In a local p
 
 ## Reference and Assets
 
-The background artwork, border, and peacock were extracted from the supplied WhatsApp video. The recording limits their resolution and includes its original watermark. The website closely recreates its traditional appearance, but is not the original template or an exact reconstruction of its animation timing. Original high-resolution artwork and the original font files would be needed for an exact match.
+The temple masthead artwork was extracted from the supplied WhatsApp video. The page uses `assets/blessings-enhanced.jpg`: the marked outer edges were trimmed (20px left, 30px right, 16px bottom), preserving the central Sita Rama scene, then the remaining artwork was enlarged 4x with Lanczos resampling and mild sharpening to 1352 by 724 pixels. No generative reconstruction was used; the original 388-by-197 recording crop limits recoverable detail. The unchanged source remains in `assets/blessings.jpg`. The updated design uses peach and blush paper, sage accents, a fine gold frame, and original botanical corner artwork in `assets/botanical-corner.svg`. Peacocks are no longer displayed. Previous border and peacock assets are preserved but unused.
 
-The typeface is the open-source Cormorant Garamond. Its license is in `assets/FONT-LICENSE.txt`. Icons use Lucide, with its license in `assets/ICON-LICENSE.txt`. All fonts and icons are hosted locally.
+Great Vibes is used for names, Bodoni Moda for headings, and DM Sans for practical details. Their local font files are `great-vibes.ttf`, `bodoni-moda.ttf`, and `dm-sans.ttf` under `assets/`. Their SIL Open Font Licenses are included as `GREAT-VIBES-LICENSE.txt`, `BODONI-LICENSE.txt`, and `DM-SANS-LICENSE.txt`. Icons use Lucide, with its license in `assets/ICON-LICENSE.txt`. All fonts and icons are hosted locally. The old Cormorant font files are retained but unused.
 
 The current background music is the user-provided "Thana Pranale Neevani" recording. `assets/thana-pranale-neevani.mp3` is an unchanged copy of the supplied `Thana-Pranale-Neevani.mp3` download, approximately 2 minutes 3 seconds long. The original download remains untouched. The site plays the local MP3, not a YouTube stream. Obtain any permissions needed before publicly hosting the recording.
 
-The song loops at a gentle volume, starts only when the guest taps the music button, and pauses when they leave the tab or open the engagement film. Reduced-motion preferences disable decorative animations. To publish the music replacement, upload the updated `index.html` and `invitation.js` to the repository root, and `thana-pranale-neevani.mp3` into `assets/`.
+The song loops at a gentle volume and starts when the guest taps the seal or Skip opening. The music button pauses or resumes playback. Browsers generally require that first interaction before allowing sound; if playback is blocked, the guest can retry with the music button. Music also pauses when they leave the tab or open the engagement film, without automatically restarting afterward. Reduced-motion preferences disable decorative animations. To publish this behavior, upload the updated `index.html`, `invitation.js`, and `opening.js` to the repository root, with `thana-pranale-neevani.mp3` in `assets/`.
 
 The previous, now-unused `assets/traditional-wedding.m4a` and `assets/traditional-wedding.wav` files are preserved. They contain a 54-second excerpt of [Thakil & Nadaswaram during temple Deeparadhana](https://commons.wikimedia.org/wiki/File:Thakil_%26_Nadaswaram_during_temple_Deeparadhana.ogg) by Vis M, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), converted to AAC/WAV with fade-in and fade-out. This attribution applies to those earlier recordings, not to the replacement song.
 
-The couple portraits are enhanced copies of the two supplied WhatsApp photos. Only subtle tone/color correction and light sharpening were applied, without facial reshaping, skin smoothing, generative edits, or changing expressions. The originals in Downloads are untouched. The full 1067-by-1600 framing is preserved in the image files; the invitation displays them in gold arches, with a full-photo view on selection. Source EXIF/GPS metadata was not copied to the exported JPEGs. Obtain permission for the supplied artwork before publishing it publicly.
+The couple portraits are enhanced copies of the two supplied WhatsApp photos. Only subtle tone/color correction and light sharpening were applied, without facial reshaping, skin smoothing, generative edits, or changing expressions. The originals in Downloads are untouched. The full 1067-by-1600 framing is preserved in the image files; the invitation displays them in oval frames with a double-gold border, with a full-photo view on selection. Source EXIF/GPS metadata was not copied to the exported JPEGs. Both parent captions use three lines: the S/O or D/O prefix and father's full name, an ampersand, then the mother's name. Obtain permission for the supplied artwork before publishing it publicly.
 
-The celebrations follow a curved, scroll-driven path of original barefoot illustrations in alternating vermilion and antique gold. Each ceremony fades in when the footsteps reach its stop and stays visible afterward. On smaller screens, the path runs beside the event details. With reduced motion enabled or JavaScript disabled, all event details remain readable.
+The celebrations follow a curved, scroll-driven path of original barefoot illustrations in alternating rose and sage. Each ceremony fades in when the footsteps reach its stop and stays visible afterward. On smaller screens, the path runs beside the event details. With reduced motion enabled or JavaScript disabled, all event details remain readable.
+
+## Ganesha Seal Opening
+
+On a fresh page load, the invitation opens with a full-screen sealed-paper design. Selecting the Ganesha seal lifts it and swings the two paper panels open in 3D. `opening.js` uses the locally hosted Three.js 0.160.1 library in `assets/three.min.js`; its MIT license is in `assets/THREE-LICENSE.txt`. The seal displays the user-supplied gold Ganesha artwork surrounded by flowers on a white medallion inside a rose-and-gold Canvas frame. Paper textures are generated locally; no external image service is needed at runtime.
+
+The opening uses `assets/ganesha-floral-enhanced.jpg`, a 1252-by-1226 copy of the supplied floral artwork, enlarged 2x with Lanczos resampling and mild unsharp masking. No generative changes were made; enlargement cannot recover detail absent from the original. The unchanged 626-by-613 source is preserved as `assets/ganesha-floral.jpg`, copied from `WhatsApp Image 2026-10-23 at 22.08.13.jpeg` in Downloads. The complete floral artwork is fitted into a 1024-by-1024 seal texture, and the 3D renderer uses a pixel density between 2 and 3 for sharper presentation. The original download is untouched, and the earlier orange artwork in `assets/ganesha-artwork.jpg` is preserved but unused. Confirm any required reuse permissions before publishing this supplied artwork. The original line drawing remains a fallback while the image loads or if it is unavailable.
+
+The previous, now-unused `assets/ganesha-seal.jpg` is a resized copy of [Dagdusheth Ganpati 02.JPG](https://commons.wikimedia.org/wiki/File:Dagdusheth_Ganpati_02.JPG) by Meghavbafana, licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). It and its attribution in `assets/GANESHA-LICENSE.txt` are preserved. That license applies to the earlier photograph, not to the replacement artwork.
+
+The opening supports keyboard activation, Escape, and a Skip opening button. The underlying invitation is inert only while the cover is displayed, and its focus is restored after opening without a box around the name heading. Reduced-motion users skip the animation, devices without WebGL receive a short fade, and the cover stays hidden when JavaScript is unavailable. Rendering resources are released after opening. Music is requested immediately from the opening interaction, before the animation begins, to preserve browser user activation.
 
 ## Engagement Film
 
@@ -62,6 +72,6 @@ Opening either film link pauses the invitation music. YouTube reported the video
 
 Update names and event details in `index.html`. Update the wedding countdown date in `invitation.js` and the downloadable calendar event in `wedding.ics` whenever the wedding date changes. Calendar timestamps are UTC; `20261121T140000Z` is November 21, 2026 at 7:30 PM IST.
 
-## Publish the Photo Update
+## Publish the Latest Design
 
-Using only the personal `sravan2720` account in the user's incognito browser, replace `index.html`, `styles.css`, and `invitation.js` at the GitHub repository root. Add `sravan-kumar-portrait.jpg` and `sreelekha-portrait.jpg` inside the existing `assets` folder. Keep the other assets in place. Commit to the Pages publishing branch and wait for deployment. These changes have been prepared locally; no GitHub account credentials are used by the assistant.
+At the repository root, upload `index.html`, `styles.css`, `invitation.js`, the new `opening.js`, `wedding.ics`, and this README. Upload all files from the local `assets` folder into the repository's `assets` folder, preserving their names. This includes the three new fonts and their licenses, Three.js and its license, `botanical-corner.svg`, `ganesha-floral-enhanced.jpg`, the existing photos and artwork, and `thana-pranale-neevani.mp3`. Keeping older unused assets and their licenses is harmless. Commit to the Pages publishing branch and wait for deployment. These changes have been prepared locally; no GitHub account credentials or publishing actions are performed by the assistant.

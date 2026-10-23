@@ -269,22 +269,27 @@ function reportMusicError() {
 weddingMusic.addEventListener('error', reportMusicError);
 weddingMusic.querySelector('source:last-child').addEventListener('error', reportMusicError);
 
-musicButton.addEventListener('click', async () => {
+async function playMusic() {
   musicButton.disabled = true;
   try {
-    if (!weddingMusic.paused) {
-      stopMusic();
-    } else {
-      await weddingMusic.play();
-      if (document.hidden) stopMusic();
-    }
+    await weddingMusic.play();
+    if (document.hidden) stopMusic();
   } catch (error) {
     stopMusic();
     if (error.name !== 'AbortError') notify('Music could not play. Please tap the music button again.');
   } finally {
     musicButton.disabled = false;
   }
+}
+
+musicButton.addEventListener('click', () => {
+  if (!weddingMusic.paused) stopMusic();
+  else playMusic();
 });
+
+window.addEventListener('invitation:opening', () => {
+  if (weddingMusic.paused) playMusic();
+}, { once: true });
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) stopMusic();
