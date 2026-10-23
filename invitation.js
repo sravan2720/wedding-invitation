@@ -2,6 +2,28 @@
 
 if (window.lucide) window.lucide.createIcons();
 
+document.querySelectorAll('#engagement a').forEach(link => link.addEventListener('click', stopMusic));
+
+const portraitDialog = document.getElementById('portrait-dialog');
+if (portraitDialog && typeof portraitDialog.showModal === 'function') {
+  document.querySelectorAll('[data-portrait]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      const name = link.dataset.portrait;
+      const photo = document.getElementById('portrait-full');
+      document.getElementById('portrait-name').textContent = name;
+      photo.src = link.href;
+      photo.alt = `Full portrait of ${name}`;
+      portraitDialog.showModal();
+    });
+  });
+  document.getElementById('close-portrait').addEventListener('click', () => portraitDialog.close());
+  portraitDialog.addEventListener('click', event => {
+    if (event.target === portraitDialog) portraitDialog.close();
+  });
+}
+
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function setupEventJourney() {
   const journey = document.querySelector('.event-journey');

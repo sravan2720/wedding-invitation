@@ -62,8 +62,18 @@ h3 { font-size: 30px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; 
 .peacock { width: 135px; height: 154px; object-fit: contain; position: absolute; z-index: 1; top: 0; left: calc(50% - 15px); transform-origin: 30% 65%; animation: peacock-sway 6s ease-in-out infinite alternate; }
 .person:nth-child(2) .peacock { transform: scaleX(-1); left: auto; right: calc(50% - 15px); animation-name: peacock-sway-reverse; }
 .arch { width: 100%; aspect-ratio: 4 / 4.5; border: 1px solid var(--gold); border-radius: 48% 48% 5px 5px; display: grid; place-content: center; background: radial-gradient(ellipse at 50% 40%, #fff8da, #f4dfa0); box-shadow: inset 0 0 0 5px var(--paper), inset 0 0 0 6px #b3934655; }
-.initial { font-size: 96px; font-style: italic; color: #a9823b; font-weight: 400; line-height: 1; }
-.arch .ornament { margin: 18px auto 0; width: 100px; font-size: 20px; }
+.portrait-link { display: block; position: relative; aspect-ratio: 3 / 4; padding: 7px; overflow: hidden; cursor: zoom-in; background: var(--paper); }
+.portrait-link:hover { border-color: var(--ink); }
+.portrait { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 48% 48% 2px 2px; }
+.portrait-sravan { object-position: 50% 12%; }
+.portrait-sreelekha { object-position: 50% 36%; }
+.portrait-dialog { width: min(540px, calc(100vw - 28px)); max-width: none; max-height: calc(100svh - 28px); padding: 14px; border: 1px solid var(--gold); border-radius: 6px; background: var(--paper); color: var(--ink); overflow: auto; }
+.portrait-dialog::backdrop { background: #301c12c7; }
+.portrait-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.portrait-dialog-heading h2 { margin: 0; font-size: 26px; }
+.portrait-dialog-heading .icon-button { flex: none; }
+.portrait-dialog > img { display: block; width: 100%; height: auto; max-height: calc(100svh - 130px); object-fit: contain; }
+body:has(.portrait-dialog[open]) { overflow: hidden; }
 .person h3 { margin: 20px 0 4px; }
 .role { margin: 0; font-size: 17px; color: var(--muted); font-style: italic; }
 .countdown { display: flex; justify-content: center; gap: 24px; margin-top: 30px; }
@@ -105,11 +115,23 @@ h3 { font-size: 30px; font-weight: 500; line-height: 1.15; margin-bottom: 10px; 
 .venue address { font-style: normal; color: var(--muted); margin-bottom: 25px; line-height: 1.5; }
 .primary-link { background: var(--ink); color: #fff6d6; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 46px; padding: 12px 23px; border-radius: 3px; font-size: 18px; text-decoration: none; transition: background .2s; }
 .primary-link:hover { background: #552719; }
+.engagement { padding-bottom: 25px; }
+.film-stage { position: relative; width: 100%; max-width: 680px; aspect-ratio: 16 / 9; margin: 0 auto; border: 1px solid var(--gold); border-radius: 4px; overflow: hidden; background: #211c18; }
+.film-launch { display: block; position: absolute; inset: 0; }
+.film-launch:focus-visible { outline-offset: -4px; }
+.film-launch img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.film-play { display: grid; place-items: center; position: absolute; top: 14px; right: 14px; width: 48px; height: 48px; border: 1px solid #fff0bcbb; border-radius: 50%; background: #703523ed; color: #fff0bc; box-shadow: 0 2px 12px #211c1833; transition: background .2s; }
+.film-play svg { width: 22px; height: 22px; fill: currentColor; stroke-width: 1; }
+.film-launch:hover .film-play { background: #552719; }
+.film-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 58px; max-width: 680px; margin: 6px auto 0; }
 footer { padding-top: 25px; padding-bottom: 80px; }
 footer h2 { font-size: 34px; }
 footer p { color: var(--muted); font-size: 19px; line-height: 1.5; }
 footer .signature { font-size: 28px; font-style: italic; color: var(--ink); }
 footer .music-credit { font-size: 14px; line-height: 1.6; margin: 30px auto 0; max-width: 290px; }
+.music-credit summary { cursor: pointer; min-height: 44px; line-height: 44px; list-style-position: inside; }
+.music-credit summary:focus-visible { outline: 2px solid #266c66; outline-offset: 4px; }
+.music-credit p { font-size: inherit; margin: 10px 0 0; }
 .music-credit a { text-decoration-color: #b3934670; text-underline-offset: 3px; }
 .utility { position: fixed; z-index: 5; right: max(30px, calc((100vw - 920px) / 2 + 32px)); bottom: 24px; display: flex; flex-direction: column; gap: 10px; }
 .icon-button { display: grid; place-items: center; width: 45px; height: 45px; border: 1px solid #ba9749; border-radius: 50%; background: #fff0bfed; color: var(--ink); cursor: pointer; box-shadow: 0 3px 12px #70461d14; }
