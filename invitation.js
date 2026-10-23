@@ -242,6 +242,7 @@ document.getElementById('share').addEventListener('click', async () => {
 
 const musicButton = document.getElementById('music');
 const weddingMusic = document.getElementById('wedding-music');
+const musicStartTime = 4;
 weddingMusic.volume = 0.3;
 
 function setMusicState(playing) {
@@ -258,7 +259,10 @@ function stopMusic() {
 
 weddingMusic.addEventListener('playing', () => setMusicState(true));
 weddingMusic.addEventListener('pause', () => setMusicState(false));
-weddingMusic.addEventListener('ended', () => setMusicState(false));
+weddingMusic.addEventListener('ended', () => {
+  setMusicState(false);
+  if (!document.hidden) playMusic();
+});
 function reportMusicError() {
   stopMusic();
   musicButton.disabled = false;
@@ -272,6 +276,9 @@ weddingMusic.querySelector('source:last-child').addEventListener('error', report
 async function playMusic() {
   musicButton.disabled = true;
   try {
+    if (weddingMusic.ended || weddingMusic.currentTime < musicStartTime) {
+      weddingMusic.currentTime = musicStartTime;
+    }
     await weddingMusic.play();
     if (document.hidden) stopMusic();
   } catch (error) {
