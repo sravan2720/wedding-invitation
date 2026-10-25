@@ -21,11 +21,25 @@
   <meta name="twitter:image:alt" content="Sravan Kumar and Sreelekha together">
   <link rel="canonical" href="https://sravan2720.github.io/wedding-invitation/">
   <title>Wedding Invitation | Sravan Kumar &amp; Sreelekha</title>
-  <link rel="stylesheet" href="styles.css?v=portraits-oval-1">
+  <script>
+    (() => {
+      document.documentElement.classList.add('opening-pending');
+      document.addEventListener('click', event => {
+        if (!event.target.closest('#open-invitation, #skip-opening')) return;
+        const cover = document.getElementById('invitation-opening');
+        if (!document.documentElement.classList.contains('opening-pending') || cover.dataset.ready === 'true') return;
+        document.documentElement.classList.remove('opening-pending');
+        cover.hidden = true;
+        cover.dataset.state = 'open';
+        window.dispatchEvent(new Event('invitation:opening'));
+      });
+    })();
+  </script>
+  <link rel="stylesheet" href="styles.css?v=seal-first-1">
   <script src="assets/lucide.min.js" defer></script>
   <script src="invitation.js?v=music-4" defer></script>
   <script src="assets/three.min.js" defer></script>
-  <script src="opening.js?v=seal-7" defer></script>
+  <script src="opening.js?v=seal-8" defer></script>
 </head>
 <body>
   <div class="invitation-opening" id="invitation-opening" role="dialog" aria-modal="true" aria-labelledby="opening-title" hidden>

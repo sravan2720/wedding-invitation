@@ -27,6 +27,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; }
 a { color: inherit; }
 button:focus-visible, a:focus-visible { outline: 2px solid #266c66; outline-offset: 6px; }
+html.opening-pending body { overflow: hidden; }
+html.opening-pending .invitation, html.opening-pending .utility { visibility: hidden; }
+html.opening-pending .invitation-opening[hidden] { display: block; }
 body.opening-locked { overflow: hidden; }
 .invitation-opening { --seal-size: 136px; --seal-y: 52%; position: fixed; inset: 0; z-index: 20; height: 100svh; overflow: hidden; background: var(--blush); text-align: center; isolation: isolate; }
 .invitation-opening[hidden] { display: none; }
@@ -49,7 +52,7 @@ body.opening-locked { overflow: hidden; }
 .opening-names .opening-ampersand { font-size: 28px; color: var(--gold); margin: 4px 0; }
 .seal-button { position: absolute; z-index: 3; top: var(--seal-y); left: 50%; transform: translate(-50%, -50%); width: var(--seal-size); height: var(--seal-size); border: 0; padding: 0; border-radius: 50%; background: transparent; cursor: pointer; }
 .seal-button:focus-visible { outline: 2px solid var(--sage); outline-offset: 12px; }
-.seal-fallback { display: block; width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 8px 24px #683e4d44; }
+.seal-fallback { display: block; width: 100%; height: 100%; border-radius: 50%; background: #9f596c url('assets/ganesha-floral-enhanced.jpg') center / 75% auto no-repeat; box-shadow: 0 8px 24px #683e4d44; }
 .scene-ready .seal-fallback { visibility: hidden; }
 .opening-hint { top: calc(var(--seal-y) + var(--seal-size) / 2 + 26px); left: 24px; right: 24px; margin: 0; font-size: 13px; color: var(--ink); }
 .opening-footer { bottom: 88px; left: 22px; right: 22px; pointer-events: none; }

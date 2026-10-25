@@ -8,7 +8,7 @@
   const invitation = document.querySelector('.invitation');
   const utility = document.querySelector('.utility');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  if (!cover || !sealButton || !skipButton || !sealArt || !invitation) return;
+  if (!cover || !sealButton || !skipButton || !sealArt || !invitation || !document.documentElement.classList.contains('opening-pending')) return;
 
   let renderer;
   let scene;
@@ -76,6 +76,7 @@
   function finishOpening() {
     if (finished) return;
     finished = true;
+    document.documentElement.classList.remove('opening-pending');
     clearTimeout(safetyTimer);
     disposeScene();
     cover.hidden = true;
@@ -96,6 +97,7 @@
   function openInvitation(skip = false) {
     if (finished || opening) return;
     opening = true;
+    document.documentElement.classList.remove('opening-pending');
     window.dispatchEvent(new Event('invitation:opening'));
     openingAt = performance.now();
     cover.classList.add('is-opening');
@@ -253,7 +255,11 @@
     scene.add(seal);
     renderer.domElement.addEventListener('webglcontextlost', event => {
       event.preventDefault();
-      finishOpening();
+      if (opening) finishOpening();
+      else {
+        disposeScene();
+        cover.classList.remove('scene-ready');
+      }
     });
     document.getElementById('opening-scene').append(renderer.domElement);
     window.addEventListener('resize', resizeScene);
@@ -279,6 +285,7 @@
   motion.addEventListener('change', handleMotionChange);
   cover.hidden = false;
   cover.dataset.state = 'closed';
+  cover.dataset.ready = 'true';
   invitation.inert = true;
   if (utility) utility.inert = true;
   document.body.classList.add('opening-locked');
