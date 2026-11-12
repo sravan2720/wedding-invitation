@@ -30,7 +30,7 @@ The Share button includes the website address when hosted publicly. In a local p
 - Groom: Sravan Kumar. Bride: Sreelekha. These roles and the photo assignments were confirmed by the user.
 - Groom ceremony: November 19, 2026, 6:52 AM IST.
 - Bride ceremony: November 19, 2026, 6:54 AM IST.
-- Haldi: November 20, 2026, 10:00 AM IST.
+- Haldi: November 20, 2026, 3:00 PM IST.
 - Mehendi: November 20, 2026, 7:00 PM IST.
 - Wedding: November 21, 2026, 7:30 PM IST.
 - Wedding venue: Kusuma Satya Convention Hall - 2, Nadakuduru, Kakinada.
